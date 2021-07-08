@@ -1,23 +1,18 @@
 {
-  "extends": "../../../common/tsconfig.json",
-  "compilerOptions": {
-    "target": "es5",
-    "downlevelIteration": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react"
-  },
-  "include": [
-    "src"
-  ]
+    "extends": "../../../common/tsconfig.json",
+    "compilerOptions": {
+        "target": "es5",
+        "downlevelIteration": true,
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "esnext",
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react",
+        "noFallthroughCasesInSwitch": true
+    },
+    "include": ["src"]
 }

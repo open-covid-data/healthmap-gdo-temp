@@ -1,110 +1,110 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-curatorui-dev-94706-authRole",
-      "UnauthRoleArn": "arn:aws:iam::516053802872:role/amplify-curatorui-dev-94706-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::516053802872:role/amplify-curatorui-dev-94706-authRole",
-      "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-curatorui-dev-94706-deployment",
-      "UnauthRoleName": "amplify-curatorui-dev-94706-unauthRole",
-      "StackName": "amplify-curatorui-dev-94706",
-      "StackId": "arn:aws:cloudformation:us-east-2:516053802872:stack/amplify-curatorui-dev-94706/ebf9e6a0-5a32-11eb-bf6f-027590a47dea",
-      "AmplifyAppId": "d1i7y80u3r74nr"
-    },
-    "categories": {
-      "function": {
-        "curatoruic254d982DefineAuthChallenge": {},
-        "curatoruic254d982CreateAuthChallenge": {
-          "CHALLENGEANSWER": ""
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-curatorui-dev-94706-authRole",
+            "UnauthRoleArn": "arn:aws:iam::516053802872:role/amplify-curatorui-dev-94706-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::516053802872:role/amplify-curatorui-dev-94706-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-curatorui-dev-94706-deployment",
+            "UnauthRoleName": "amplify-curatorui-dev-94706-unauthRole",
+            "StackName": "amplify-curatorui-dev-94706",
+            "StackId": "arn:aws:cloudformation:us-east-2:516053802872:stack/amplify-curatorui-dev-94706/ebf9e6a0-5a32-11eb-bf6f-027590a47dea",
+            "AmplifyAppId": "d1i7y80u3r74nr"
         },
-        "curatoruic254d982VerifyAuthChallengeResponse": {},
-        "curatoruic254d982PreSignup": {
-          "DOMAINWHITELIST": ""
-        }
-      },
-      "auth": {
-        "curatoruic254d982": {}
-      }
-    },
-    "nonCFNdata": {
-      "function": {
-        "curatorui1fac50bc": {
-          "layerVersionMap": {
-            "1": {
-              "permissions": [
-                {
-                  "type": "private"
+        "categories": {
+            "function": {
+                "curatoruic254d982DefineAuthChallenge": {},
+                "curatoruic254d982CreateAuthChallenge": {
+                    "CHALLENGEANSWER": ""
+                },
+                "curatoruic254d982VerifyAuthChallengeResponse": {},
+                "curatoruic254d982PreSignup": {
+                    "DOMAINWHITELIST": ""
                 }
-              ]
+            },
+            "auth": {
+                "curatoruic254d982": {}
             }
-          }
         },
-        "preSignUp": {
-          "layerVersionMap": {
-            "1": {
-              "permissions": [
-                {
-                  "type": "private"
+        "nonCFNdata": {
+            "function": {
+                "curatorui1fac50bc": {
+                    "layerVersionMap": {
+                        "1": {
+                            "permissions": [
+                                {
+                                    "type": "private"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "preSignUp": {
+                    "layerVersionMap": {
+                        "1": {
+                            "permissions": [
+                                {
+                                    "type": "private"
+                                }
+                            ]
+                        }
+                    }
                 }
-              ]
             }
-          }
         }
-      }
-    }
-  },
-  "develop": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-curatorui-develop-122322-authRole",
-      "UnauthRoleArn": "arn:aws:iam::612888738066:role/amplify-curatorui-develop-122322-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::612888738066:role/amplify-curatorui-develop-122322-authRole",
-      "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-curatorui-develop-122322-deployment",
-      "UnauthRoleName": "amplify-curatorui-develop-122322-unauthRole",
-      "StackName": "amplify-curatorui-develop-122322",
-      "StackId": "arn:aws:cloudformation:us-east-2:612888738066:stack/amplify-curatorui-develop-122322/be848780-5eff-11eb-8cc1-0a69076c6604",
-      "AmplifyAppId": "dh5s5jmk7z8dz"
     },
-    "categories": {
-      "auth": {
-        "curatoruic254d982": {},
-        "userPoolGroups": {}
-      },
-      "function": {
-        "curatoruic254d982DefineAuthChallenge": {},
-        "curatoruic254d982CreateAuthChallenge": {
-          "CHALLENGEANSWER": ""
+    "develop": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-curatorui-develop-122322-authRole",
+            "UnauthRoleArn": "arn:aws:iam::612888738066:role/amplify-curatorui-develop-122322-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::612888738066:role/amplify-curatorui-develop-122322-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-curatorui-develop-122322-deployment",
+            "UnauthRoleName": "amplify-curatorui-develop-122322-unauthRole",
+            "StackName": "amplify-curatorui-develop-122322",
+            "StackId": "arn:aws:cloudformation:us-east-2:612888738066:stack/amplify-curatorui-develop-122322/be848780-5eff-11eb-8cc1-0a69076c6604",
+            "AmplifyAppId": "dh5s5jmk7z8dz"
         },
-        "curatoruic254d982VerifyAuthChallengeResponse": {},
-        "curatoruic254d982PreSignup": {
-          "DOMAINWHITELIST": ""
+        "categories": {
+            "auth": {
+                "curatoruic254d982": {},
+                "userPoolGroups": {}
+            },
+            "function": {
+                "curatoruic254d982DefineAuthChallenge": {},
+                "curatoruic254d982CreateAuthChallenge": {
+                    "CHALLENGEANSWER": ""
+                },
+                "curatoruic254d982VerifyAuthChallengeResponse": {},
+                "curatoruic254d982PreSignup": {
+                    "DOMAINWHITELIST": ""
+                }
+            }
         }
-      }
-    }
-  },
-  "prod": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-curatorui-prod-123117-authRole",
-      "UnauthRoleArn": "arn:aws:iam::612888738066:role/amplify-curatorui-prod-123117-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::612888738066:role/amplify-curatorui-prod-123117-authRole",
-      "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-curatorui-prod-123117-deployment",
-      "UnauthRoleName": "amplify-curatorui-prod-123117-unauthRole",
-      "StackName": "amplify-curatorui-prod-123117",
-      "StackId": "arn:aws:cloudformation:us-east-2:612888738066:stack/amplify-curatorui-prod-123117/da1aa4b0-5f00-11eb-a627-027a8c6cb26e",
-      "AmplifyAppId": "dh5s5jmk7z8dz"
     },
-    "categories": {
-      "auth": {
-        "curatoruic254d982": {},
-        "userPoolGroups": {}
-      },
-      "function": {
-        "curatoruic254d982DefineAuthChallenge": {},
-        "curatoruic254d982CreateAuthChallenge": {},
-        "curatoruic254d982VerifyAuthChallengeResponse": {},
-        "curatoruic254d982PreSignup": {}
-      }
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-curatorui-prod-123117-authRole",
+            "UnauthRoleArn": "arn:aws:iam::612888738066:role/amplify-curatorui-prod-123117-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::612888738066:role/amplify-curatorui-prod-123117-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-curatorui-prod-123117-deployment",
+            "UnauthRoleName": "amplify-curatorui-prod-123117-unauthRole",
+            "StackName": "amplify-curatorui-prod-123117",
+            "StackId": "arn:aws:cloudformation:us-east-2:612888738066:stack/amplify-curatorui-prod-123117/da1aa4b0-5f00-11eb-a627-027a8c6cb26e",
+            "AmplifyAppId": "dh5s5jmk7z8dz"
+        },
+        "categories": {
+            "auth": {
+                "curatoruic254d982": {},
+                "userPoolGroups": {}
+            },
+            "function": {
+                "curatoruic254d982DefineAuthChallenge": {},
+                "curatoruic254d982CreateAuthChallenge": {},
+                "curatoruic254d982VerifyAuthChallengeResponse": {},
+                "curatoruic254d982PreSignup": {}
+            }
+        }
     }
-  }
 }

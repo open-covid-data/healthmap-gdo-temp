@@ -1,6 +1,6 @@
 exports.handler = (event, context) => {
-  event.response.autoConfirmUser = true;
-  event.response.autoVerifyEmail = true;
+    event.response.autoConfirmUser = true;
+    event.response.autoVerifyEmail = true;
 
-  context.done(null, event);
+    context.done(null, event);
 };

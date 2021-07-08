@@ -1,85 +1,73 @@
 {
-  "function": {
-    "curatoruic254d982DefineAuthChallenge": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "curatoruic254d982CreateAuthChallenge": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "curatoruic254d982VerifyAuthChallengeResponse": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "curatoruic254d982PreSignup": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
-  "auth": {
-    "curatoruic254d982": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "curatoruic254d982DefineAuthChallenge",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
+    "function": {
+        "curatoruic254d982DefineAuthChallenge": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
         },
-        {
-          "category": "function",
-          "resourceName": "curatoruic254d982CreateAuthChallenge",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
+        "curatoruic254d982CreateAuthChallenge": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
         },
-        {
-          "category": "function",
-          "resourceName": "curatoruic254d982VerifyAuthChallengeResponse",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
+        "curatoruic254d982VerifyAuthChallengeResponse": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
         },
-        {
-          "category": "function",
-          "resourceName": "curatoruic254d982PreSignup",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
+        "curatoruic254d982PreSignup": {
+            "build": true,
+            "providerPlugin": "awscloudformation",
+            "service": "Lambda"
         }
-      ],
-      "customAuth": true
     },
-    "userPoolGroups": {
-      "service": "Cognito-UserPool-Groups",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "curatoruic254d982",
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
-          ]
+    "auth": {
+        "curatoruic254d982": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "function",
+                    "resourceName": "curatoruic254d982DefineAuthChallenge",
+                    "triggerProvider": "Cognito",
+                    "attributes": ["Arn", "Name"]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "curatoruic254d982CreateAuthChallenge",
+                    "triggerProvider": "Cognito",
+                    "attributes": ["Arn", "Name"]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "curatoruic254d982VerifyAuthChallengeResponse",
+                    "triggerProvider": "Cognito",
+                    "attributes": ["Arn", "Name"]
+                },
+                {
+                    "category": "function",
+                    "resourceName": "curatoruic254d982PreSignup",
+                    "triggerProvider": "Cognito",
+                    "attributes": ["Arn", "Name"]
+                }
+            ],
+            "customAuth": true
+        },
+        "userPoolGroups": {
+            "service": "Cognito-UserPool-Groups",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [
+                {
+                    "category": "auth",
+                    "resourceName": "curatoruic254d982",
+                    "attributes": [
+                        "UserPoolId",
+                        "AppClientIDWeb",
+                        "AppClientID",
+                        "IdentityPoolId"
+                    ]
+                }
+            ]
         }
-      ]
     }
-  }
 }

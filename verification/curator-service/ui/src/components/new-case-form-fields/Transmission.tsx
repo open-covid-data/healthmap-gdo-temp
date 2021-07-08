@@ -39,16 +39,10 @@ const TooltipText = () => (
 );
 
 export default function Transmission(): JSX.Element {
-    const {
-        setFieldValue,
-        setTouched,
-        initialValues,
-        values,
-    } = useFormikContext<CaseFormValues>();
-    const [
-        commonPlacesOfTransmission,
-        setCommonPlacesOfTransmission,
-    ] = React.useState([]);
+    const { setFieldValue, setTouched, initialValues, values } =
+        useFormikContext<CaseFormValues>();
+    const [commonPlacesOfTransmission, setCommonPlacesOfTransmission] =
+        React.useState([]);
     const classes = useStyles();
 
     React.useEffect(

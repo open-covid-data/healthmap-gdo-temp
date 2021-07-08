@@ -20,7 +20,9 @@ const styles = makeStyles(() => ({
     },
 }));
 
-export const StyledTooltip: FunctionComponent<any> = ({ children }) => {
+export const StyledTooltip: FunctionComponent<Record<string, unknown>> = ({
+    children,
+}): JSX.Element => {
     const classes = styles();
 
     return <div className={`${classes.tooltip}`}>{children}</div>;

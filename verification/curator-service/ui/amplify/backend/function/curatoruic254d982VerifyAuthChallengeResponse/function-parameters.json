@@ -1,17 +1,15 @@
 {
-  "trigger": true,
-  "modules": [
-    "boilerplate-verify"
-  ],
-  "parentResource": "curatoruic254d982",
-  "functionName": "curatoruic254d982VerifyAuthChallengeResponse",
-  "resourceName": "curatoruic254d982VerifyAuthChallengeResponse",
-  "parentStack": "auth",
-  "triggerEnvs": "[]",
-  "triggerDir": "/usr/local/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/VerifyAuthChallengeResponse",
-  "triggerTemplate": "VerifyAuthChallengeResponse.json.ejs",
-  "roleName": "curatoruic254d982VerifyAuthChallengeResponse",
-  "skipEdit": true,
-  "enableCors": false,
-  "triggerEventPath": "VerifyAuthChallengeResponse.event.json"
+    "trigger": true,
+    "modules": ["boilerplate-verify"],
+    "parentResource": "curatoruic254d982",
+    "functionName": "curatoruic254d982VerifyAuthChallengeResponse",
+    "resourceName": "curatoruic254d982VerifyAuthChallengeResponse",
+    "parentStack": "auth",
+    "triggerEnvs": "[]",
+    "triggerDir": "/usr/local/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/VerifyAuthChallengeResponse",
+    "triggerTemplate": "VerifyAuthChallengeResponse.json.ejs",
+    "roleName": "curatoruic254d982VerifyAuthChallengeResponse",
+    "skipEdit": true,
+    "enableCors": false,
+    "triggerEventPath": "VerifyAuthChallengeResponse.event.json"
 }

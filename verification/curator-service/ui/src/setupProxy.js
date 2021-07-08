@@ -7,7 +7,7 @@ module.exports = function (app) {
                 // Proxy API requests to curator service.
                 target: process.env.REACT_APP_PROXY_URL,
                 changeOrigin: true,
-            })
+            }),
         );
     }
 };

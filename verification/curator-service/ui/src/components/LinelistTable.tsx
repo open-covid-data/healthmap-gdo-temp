@@ -52,8 +52,8 @@ import renderDate, { renderDateRange } from './util/date';
 import { URLToSearchQuery } from './util/searchQuery';
 import { ChipData } from './App/App';
 import { SortBy, SortByOrder } from '../constants/types';
-import {connect, ConnectedProps} from 'react-redux';
-import {RootState} from '../store';
+import { connect, ConnectedProps } from 'react-redux';
+import { RootState } from '../store';
 import { SnackbarAlert } from './SnackbarAlert';
 
 // Limit number of data that can be displayed or downloaded to avoid long execution times of mongo queries
@@ -65,7 +65,9 @@ interface ListResponse {
     total: number;
 }
 
-const mapStateToProps = (state:RootState) => ({ filterBreadcrumbs: state.app.filterBreadcrumbs });
+const mapStateToProps = (state: RootState) => ({
+    filterBreadcrumbs: state.app.filterBreadcrumbs,
+});
 const connector = connect(mapStateToProps);
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
@@ -111,7 +113,7 @@ interface TableRow {
         date: string;
         note: string;
     };
-    nationalities?: any;
+    nationalities?: string;
 }
 
 interface LocationState {
@@ -122,8 +124,9 @@ interface LocationState {
     pageSize: number;
 }
 
-interface Props 
-    extends PropsFromRedux, RouteComponentProps<never, never, LocationState>,
+interface Props
+    extends PropsFromRedux,
+        RouteComponentProps<never, never, LocationState>,
         WithStyles<typeof styles> {
     user: User;
     page: number;
@@ -243,15 +246,12 @@ function RowMenu(props: {
     refreshData: () => void;
 }): JSX.Element {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const [deleteDialogOpen, setDeleteDialogOpen] = React.useState<boolean>(
-        false,
-    );
-    const [excludeDialogOpen, setExcludeDialogOpen] = React.useState<boolean>(
-        false,
-    );
-    const [includeDialogOpen, setIncludeDialogOpen] = React.useState<boolean>(
-        false,
-    );
+    const [deleteDialogOpen, setDeleteDialogOpen] =
+        React.useState<boolean>(false);
+    const [excludeDialogOpen, setExcludeDialogOpen] =
+        React.useState<boolean>(false);
+    const [includeDialogOpen, setIncludeDialogOpen] =
+        React.useState<boolean>(false);
     const [isDeleting, setIsDeleting] = React.useState(false);
     const classes = rowMenuStyles();
 
@@ -260,27 +260,36 @@ function RowMenu(props: {
         setAnchorEl(event.currentTarget);
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleClose = (event?: any): void => {
         event?.stopPropagation();
         setAnchorEl(null);
     };
 
-    const openDeleteDialog = async (event?: any): Promise<void> => {
+    const openDeleteDialog = async (
+        event?: React.BaseSyntheticEvent,
+    ): Promise<void> => {
         event?.stopPropagation();
         setDeleteDialogOpen(true);
     };
 
-    const openExcludeDialog = async (event?: any): Promise<void> => {
+    const openExcludeDialog = async (
+        event?: React.BaseSyntheticEvent,
+    ): Promise<void> => {
         event?.stopPropagation();
         setExcludeDialogOpen(true);
     };
 
-    const openIncludeDialog = async (event?: any): Promise<void> => {
+    const openIncludeDialog = async (
+        event?: React.BaseSyntheticEvent,
+    ): Promise<void> => {
         event?.stopPropagation();
         setIncludeDialogOpen(true);
     };
 
-    const handleDelete = async (event?: any): Promise<void> => {
+    const handleDelete = async (
+        event?: React.BaseSyntheticEvent,
+    ): Promise<void> => {
         event?.stopPropagation();
         try {
             setIsDeleting(true);
@@ -511,9 +520,8 @@ export function DownloadButton({
     totalCasesCount,
 }: DownloadButtonProps): JSX.Element {
     const location = useLocation<LocationState>();
-    const [isDownloadModalOpen, setIsDownloadModalOpen] = useState<boolean>(
-        false,
-    );
+    const [isDownloadModalOpen, setIsDownloadModalOpen] =
+        useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [fileFormat, setFileFormat] = useState('');
     const [showFullDatasetButton, setShowFullDatasetButton] = useState(true);
@@ -778,7 +786,7 @@ export function DownloadButton({
 }
 
 interface ColumnHeaderProps {
-    theClass: any;
+    theClass: string;
     columnTitle: string;
     onClickAction: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
@@ -801,7 +809,9 @@ const ColumnHeaderTitle: React.FC<ColumnHeaderProps> = ({
 
 class LinelistTable extends React.Component<Props, LinelistTableState> {
     maxDeletionThreshold = 10000;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tableRef: RefObject<any> = React.createRef();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     formRef: RefObject<any> = React.createRef();
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     unlisten: () => void = () => {};
@@ -831,12 +841,10 @@ class LinelistTable extends React.Component<Props, LinelistTableState> {
         this.setCaseVerification = this.setCaseVerification.bind(this);
         this.confirmationDialogTitle = this.confirmationDialogTitle.bind(this);
         this.confirmationDialogBody = this.confirmationDialogBody.bind(this);
-        this.showConfirmationDialogError = this.showConfirmationDialogError.bind(
-            this,
-        );
-        this.changeVerificationStatus = this.changeVerificationStatus.bind(
-            this,
-        );
+        this.showConfirmationDialogError =
+            this.showConfirmationDialogError.bind(this);
+        this.changeVerificationStatus =
+            this.changeVerificationStatus.bind(this);
         this.getExcludedCaseIds = this.getExcludedCaseIds.bind(this);
         this.handleSortByChange = this.handleSortByChange.bind(this);
         this.handleSortByOrderChange = this.handleSortByOrderChange.bind(this);
@@ -1415,16 +1423,15 @@ class LinelistTable extends React.Component<Props, LinelistTableState> {
                                     const flattenedCases: TableRow[] = [];
                                     const cases = result.data.cases;
                                     const nationalitiesRender = (
-                                        nationalities: any,
-                                    ) => {
+                                        nationalities: string[],
+                                    ): string | undefined => {
                                         if (nationalities) {
                                             nationalities.sort();
-                                            const nationalitiesString = nationalities.join(
-                                                ', ',
-                                            );
+                                            const nationalitiesString =
+                                                nationalities.join(', ');
                                             return nationalitiesString;
                                         } else {
-                                            return null;
+                                            return undefined;
                                         }
                                     };
                                     for (const c of cases) {
@@ -1474,13 +1481,14 @@ class LinelistTable extends React.Component<Props, LinelistTableState> {
                                                 (event) =>
                                                     event.name === 'outcome',
                                             )?.value,
-                                            hospitalizationDateRange: renderDateRange(
-                                                c.events.find(
-                                                    (event) =>
-                                                        event.name ===
-                                                        'hospitalAdmission',
-                                                )?.dateRange,
-                                            ),
+                                            hospitalizationDateRange:
+                                                renderDateRange(
+                                                    c.events.find(
+                                                        (event) =>
+                                                            event.name ===
+                                                            'hospitalAdmission',
+                                                    )?.dateRange,
+                                                ),
                                             symptomsOnsetDate: renderDateRange(
                                                 c.events.find(
                                                     (event) =>
@@ -1712,8 +1720,7 @@ class LinelistTable extends React.Component<Props, LinelistTableState> {
                                                 icon: (): JSX.Element => (
                                                     <Button
                                                         classes={{
-                                                            root:
-                                                                classes.toolbarItems,
+                                                            root: classes.toolbarItems,
                                                         }}
                                                     >
                                                         {this.state
@@ -1737,9 +1744,10 @@ class LinelistTable extends React.Component<Props, LinelistTableState> {
                                               ? 'Unselect'
                                               : 'Select'
                                       } all rows across pages`,
-                                                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                                 onClick: async (
+                                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                                     _: any,
+                                                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                                     rows: any,
                                                 ): Promise<void> => {
                                                     const shouldSelectAll =
@@ -1752,10 +1760,11 @@ class LinelistTable extends React.Component<Props, LinelistTableState> {
                                                         shouldSelectAll,
                                                     );
                                                     this.setState({
-                                                        numSelectedRows: shouldSelectAll
-                                                            ? this.state
-                                                                  .totalNumRows
-                                                            : 0,
+                                                        numSelectedRows:
+                                                            shouldSelectAll
+                                                                ? this.state
+                                                                      .totalNumRows
+                                                                : 0,
                                                     });
                                                 },
                                             },
@@ -1769,9 +1778,10 @@ class LinelistTable extends React.Component<Props, LinelistTableState> {
                                           'curator',
                                       ),
                                       tooltip: 'Verify selected rows',
-                                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                       onClick: async (
+                                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                           _: any,
+                                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                           rows: any,
                                       ): Promise<void> => {
                                           this.changeVerificationStatus(
@@ -1788,9 +1798,10 @@ class LinelistTable extends React.Component<Props, LinelistTableState> {
                                           'curator',
                                       ),
                                       tooltip: 'Unverify selected rows',
-                                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                       onClick: async (
+                                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                           _: any,
+                                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
                                           rows: any,
                                       ): Promise<void> => {
                                           this.changeVerificationStatus(
@@ -1834,8 +1845,7 @@ class LinelistTable extends React.Component<Props, LinelistTableState> {
                                               </form>
                                               <SaveAltIcon
                                                   classes={{
-                                                      root:
-                                                          classes.toolbarItems,
+                                                      root: classes.toolbarItems,
                                                   }}
                                               />
                                           </span>
@@ -1853,8 +1863,7 @@ class LinelistTable extends React.Component<Props, LinelistTableState> {
                                           <span aria-label="delete all">
                                               <DeleteIcon
                                                   classes={{
-                                                      root:
-                                                          classes.toolbarItems,
+                                                      root: classes.toolbarItems,
                                                   }}
                                               />
                                           </span>

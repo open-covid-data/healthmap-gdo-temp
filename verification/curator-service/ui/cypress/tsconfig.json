@@ -2,16 +2,10 @@
     "extends": "../../../../common/tsconfig.json",
     "compilerOptions": {
         "baseUrl": "../node_modules",
-        "lib": [
-            "dom"
-        ],
-        "types": [
-            "cypress"
-        ],
+        "lib": ["dom"],
+        "types": ["cypress"],
         "sourceMap": false,
         "inlineSourceMap": true
     },
-    "include": [
-        "**/*.ts"
-    ]
+    "include": ["**/*.ts"]
 }

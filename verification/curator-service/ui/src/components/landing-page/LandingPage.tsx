@@ -97,15 +97,12 @@ interface LandingPageProps {
 export default function LandingPage({
     setUser,
 }: LandingPageProps): JSX.Element {
-    const [isAgreementChecked, setIsAgreementChecked] = useState<boolean>(
-        false,
-    );
-    const [isAgreementMessage, setIsAgreementMessage] = useState<boolean>(
-        false,
-    );
-    const [isNewsletterChecked, setIsNewsletterChecked] = useState<boolean>(
-        false,
-    );
+    const [isAgreementChecked, setIsAgreementChecked] =
+        useState<boolean>(false);
+    const [isAgreementMessage, setIsAgreementMessage] =
+        useState<boolean>(false);
+    const [isNewsletterChecked, setIsNewsletterChecked] =
+        useState<boolean>(false);
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [codeSent, setCodeSent] = useState<boolean>(false);
     const [failedAttempts, setFailedAttempts] = useState<number>(0);
@@ -353,8 +350,10 @@ export default function LandingPage({
                         if (!isAgreementChecked) {
                             setIsAgreementMessage(true);
                         } else {
-                            window.location.href = `${process.env
-                                .REACT_APP_LOGIN_URL!}?newsletterAccepted=${isNewsletterChecked}`;
+                            const loginUrl = process.env.REACT_APP_LOGIN_URL;
+                            if (loginUrl) {
+                                window.location.href = `${loginUrl}?newsletterAccepted=${isNewsletterChecked}`;
+                            }
                         }
                     }}
                 />

@@ -13,12 +13,6 @@ interface Props {
     onModalClose: () => void;
 }
 
-interface State {
-    case?: Case;
-    errorMessage?: string;
-    loading: boolean;
-}
-
 export default function EditCase(props: Props): JSX.Element {
     const [c, setCase] = useState<Case>();
     const [loading, setLoading] = useState<boolean>(false);

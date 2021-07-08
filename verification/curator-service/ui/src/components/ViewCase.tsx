@@ -48,12 +48,6 @@ interface Props {
     onModalClose: () => void;
 }
 
-interface State {
-    case?: Case;
-    errorMessage?: string;
-    loading: boolean;
-}
-
 export default function ViewCase(props: Props): JSX.Element {
     const [c, setCase] = useState<Case>();
     const [loading, setLoading] = useState<boolean>(false);
@@ -94,9 +88,6 @@ export default function ViewCase(props: Props): JSX.Element {
     );
 }
 
-interface LocationState {
-    search: string;
-}
 interface CaseDetailsProps {
     c: Case;
     enableEdit?: boolean;
@@ -753,9 +744,7 @@ function VariantRows(props: { variant: Variant }): JSX.Element {
     );
 }
 
-function LocationRows(props: {
-    loc?: Location;
-}): JSX.Element {
+function LocationRows(props: { loc?: Location }): JSX.Element {
     return (
         <>
             <RowHeader title="Location" />

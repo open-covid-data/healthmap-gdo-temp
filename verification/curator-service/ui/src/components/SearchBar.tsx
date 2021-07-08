@@ -20,9 +20,7 @@ import { searchQueryToURL, URLToSearchQuery } from './util/searchQuery';
 import { useLocation, useHistory } from 'react-router-dom';
 import { KeyboardEvent, ChangeEvent } from 'react';
 import { useSelector } from 'react-redux';
-import {
-    selectFilterBreadcrumbs,
-} from './App/redux/selectors';
+import { selectFilterBreadcrumbs } from './App/redux/selectors';
 
 const searchBarStyles = makeStyles((theme: Theme) => ({
     searchRoot: {
@@ -107,10 +105,9 @@ export default function SearchBar({
 
     useEffect(() => {
         if (filtersBreadcrumb.length > 0) {
-            setSearchError(false) 
+            setSearchError(false);
             return;
         }
-
     }, [filtersBreadcrumb]);
 
     // Set search query debounce to 1000ms
@@ -174,10 +171,7 @@ export default function SearchBar({
     ) {
         let searchStringStrippedOutColon = eventTargetValue;
         if (eventTargetValue.includes(':')) {
-            searchStringStrippedOutColon = eventTargetValue.replace(
-                /:/g,
-                '',
-            );
+            searchStringStrippedOutColon = eventTargetValue.replace(/:/g, '');
             setSearchError(true);
             disallowFilteringInSearchBar(event);
         } else {
@@ -220,7 +214,7 @@ export default function SearchBar({
                     fullWidth
                     InputProps={{
                         margin: 'dense',
-                        className:clsx(searchError && classes.multilineColor),
+                        className: clsx(searchError && classes.multilineColor),
                         startAdornment: (
                             <>
                                 <StyledInputAdornment position="start">
@@ -242,7 +236,8 @@ export default function SearchBar({
                                         startIcon={<HelpIcon />}
                                         onClick={toggleDataGuide}
                                         className={clsx({
-                                            [classes.activeButton]: isDataGuideOpen,
+                                            [classes.activeButton]:
+                                                isDataGuideOpen,
                                         })}
                                         ref={guideButtonRef}
                                     >

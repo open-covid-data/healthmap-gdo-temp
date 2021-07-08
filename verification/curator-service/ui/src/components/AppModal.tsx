@@ -39,7 +39,7 @@ interface Props extends WithStyles<typeof styles> {
     onModalClose?: () => void;
 }
 
-class AppModal extends React.Component<Props, {}> {
+class AppModal extends React.Component<Props, unknown> {
     render(): JSX.Element {
         const { classes } = this.props;
         return (

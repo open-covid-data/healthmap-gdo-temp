@@ -14,7 +14,11 @@ interface Props {
     onClose: () => void;
 }
 
-export default function WrongCodeDialog({ isOpen, setIsOpen, onClose }: Props) {
+export default function WrongCodeDialog({
+    isOpen,
+    setIsOpen,
+    onClose,
+}: Props): JSX.Element {
     return (
         <Dialog open={isOpen}>
             <DialogTitle>

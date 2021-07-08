@@ -27,7 +27,7 @@ const styles = (theme: Theme) =>
 // Cf. https://material-ui.com/guides/typescript/#augmenting-your-props-using-withstyles
 type Props = WithStyles<typeof styles>;
 
-class CumulativeCharts extends React.Component<Props, {}> {
+class CumulativeCharts extends React.Component<Props, unknown> {
     async renderCharts() {
         const sdk = new ChartsEmbedSDK({
             baseUrl: 'https://charts.mongodb.com/charts-covid19map-prod-dznzw',

@@ -1,121 +1,125 @@
 {
-  "name": "ui",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@date-io/date-fns": "^1.3.13",
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.56",
-    "@material-ui/pickers": "^3.2.10",
-    "@mongodb-js/charts-embed-dom": "^1.1.3",
-    "@reduxjs/toolkit": "^1.5.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "@types/jest": "^24.9.1",
-    "@types/lodash": "^4.14.161",
-    "@types/mongodb": "^3.5.27",
-    "@types/node": "^12.12.62",
-    "@types/papaparse": "^5.2.5",
-    "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.6",
-    "@types/react-highlight-words": "^0.16.2",
-    "@types/react-router-dom": "^5.1.5",
-    "@types/react-scroll": "^1.8.0",
-    "@types/shortid": "0.0.29",
-    "@types/yup": "^0.29.7",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
-    "amazon-cognito-identity-js": "^4.5.7",
-    "aws-amplify": "^3.3.14",
-    "aws-lambda": "^1.0.6",
-    "axios": "^0.21.1",
-    "clsx": "^1.1.1",
-    "date-fns": "^2.16.1",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-cypress": "^2.11.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "formik": "^2.1.5",
-    "formik-material-ui": "^2.0.1",
-    "formik-material-ui-pickers": "0.0.8",
-    "history": "^4.10.1",
-    "http-proxy-middleware": "^1.0.5",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.4.0",
-    "material-table": "^1.69.3",
-    "material-ui-chip-input": "^2.0.0-beta.2",
-    "mongodb": "^3.6.2",
-    "mongodb-client-encryption": "^1.2.1",
-    "prettier": "^2.1.2",
-    "qs": "^6.10.0",
-    "react": "^16.13.1",
-    "react-csv-reader": "^3.1.0",
-    "react-dom": "^16.13.1",
-    "react-draggable": "^4.4.3",
-    "react-google-button": "^0.7.2",
-    "react-highlight-words": "^0.17.0",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.1.2",
-    "react-router-last-location": "^2.0.1",
-    "react-scripts": "^3.4.4",
-    "react-scroll": "^1.8.0",
-    "shortid": "^2.2.15",
-    "typeface-roboto": "0.0.75",
-    "typescript": "^3.9.7",
-    "yup": "^0.29.3"
-  },
-  "scripts": {
-    "start-noenv": "react-scripts start",
-    "start": "PORT=3002 react-scripts start",
-    "build": "react-scripts build",
-    "prepare-variants": "csvtojson ./variantsofconcern.csv > src/components/assets/variants.json",
-    "init-case-db": "cd ../../../data-serving/scripts/setup-db && npm run setup-cases",
-    "init-sources-db": "cd ../../../data-serving/scripts/setup-db && npm run setup-sources",
-    "import-case-data": "cd ../../../data-serving/data-service && npm run import-data",
-    "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
-    "test": "react-scripts test",
-    "test-and-coverage": "react-scripts test --coverage --watchAll=false",
-    "test-silent": "react-scripts test --watchAll=false",
-    "eject": "react-scripts eject",
-    "cypress-open": "cypress open",
-    "cypress-run": "cypress run",
-    "cypress-run-ff": "cypress run --browser firefox",
-    "cypress-run-edge": "cypress run --browser edge"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/qs": "^6.9.6",
-    "csvtojson": "^2.0.10",
-    "cypress": "^5.2.0",
-    "cypress-file-upload": "^4.1.1",
-    "jest-canvas-mock": "^2.2.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
+    "name": "ui",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@date-io/date-fns": "^1.3.13",
+        "@material-ui/core": "^4.11.0",
+        "@material-ui/icons": "^4.9.1",
+        "@material-ui/lab": "^4.0.0-alpha.56",
+        "@material-ui/pickers": "^3.2.10",
+        "@mongodb-js/charts-embed-dom": "^1.1.3",
+        "@reduxjs/toolkit": "^1.5.1",
+        "@testing-library/jest-dom": "^4.2.4",
+        "@testing-library/react": "^9.5.0",
+        "@testing-library/user-event": "^7.2.1",
+        "@types/jest": "^24.9.1",
+        "@types/lodash": "^4.14.161",
+        "@types/mongodb": "^3.5.27",
+        "@types/node": "^12.12.62",
+        "@types/papaparse": "^5.2.5",
+        "@types/react": "^16.9.49",
+        "@types/react-dom": "^16.9.6",
+        "@types/react-highlight-words": "^0.16.2",
+        "@types/react-router-dom": "^5.1.5",
+        "@types/react-scroll": "^1.8.0",
+        "@types/shortid": "0.0.29",
+        "@types/yup": "^0.29.7",
+        "@typescript-eslint/eslint-plugin": "^4.28.1",
+        "@typescript-eslint/parser": "^2.34.0",
+        "amazon-cognito-identity-js": "^4.5.7",
+        "aws-amplify": "^3.3.14",
+        "aws-lambda": "^1.0.6",
+        "axios": "^0.21.1",
+        "clsx": "^1.1.1",
+        "date-fns": "^2.16.1",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-cypress": "^2.11.1",
+        "eslint-plugin-prettier": "^3.1.4",
+        "formik": "^2.1.5",
+        "formik-material-ui": "^2.0.1",
+        "formik-material-ui-pickers": "0.0.8",
+        "history": "^4.10.1",
+        "http-proxy-middleware": "^1.0.5",
+        "husky": "^4.3.0",
+        "lint-staged": "^10.4.0",
+        "material-table": "^1.69.3",
+        "material-ui-chip-input": "^2.0.0-beta.2",
+        "mongodb": "^3.6.2",
+        "mongodb-client-encryption": "^1.2.1",
+        "prettier": "^2.1.2",
+        "qs": "^6.10.0",
+        "react": "^16.13.1",
+        "react-csv-reader": "^3.1.0",
+        "react-dom": "^16.13.1",
+        "react-draggable": "^4.4.3",
+        "react-google-button": "^0.7.2",
+        "react-highlight-words": "^0.17.0",
+        "react-redux": "^7.2.4",
+        "react-router-dom": "^5.1.2",
+        "react-router-last-location": "^2.0.1",
+        "react-scripts": "^4.0.3",
+        "react-scroll": "^1.8.0",
+        "shortid": "^2.2.15",
+        "typeface-roboto": "0.0.75",
+        "typescript": "^3.9.7",
+        "yup": "^0.29.3"
+    },
+    "scripts": {
+        "start-noenv": "react-scripts start",
+        "start": "PORT=3002 react-scripts start",
+        "build": "react-scripts build",
+        "prepare-variants": "csvtojson ./variantsofconcern.csv > src/components/assets/variants.json",
+        "init-case-db": "cd ../../../data-serving/scripts/setup-db && npm run setup-cases",
+        "init-sources-db": "cd ../../../data-serving/scripts/setup-db && npm run setup-sources",
+        "import-case-data": "cd ../../../data-serving/data-service && npm run import-data",
+        "lint": "tsc --noEmit && eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+        "test": "react-scripts test",
+        "test-and-coverage": "react-scripts test --coverage --watchAll=false",
+        "test-silent": "react-scripts test --watchAll=false",
+        "eject": "react-scripts eject",
+        "cypress-open": "cypress open",
+        "cypress-run": "cypress run",
+        "cypress-run-ff": "cypress run --browser firefox",
+        "cypress-run-edge": "cypress run --browser edge",
+        "lint-in-place": "prettier --write ."
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@types/qs": "^6.9.6",
+        "csvtojson": "^2.0.10",
+        "cypress": "^5.2.0",
+        "cypress-file-upload": "^4.1.1",
+        "jest-canvas-mock": "^2.2.0"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*/**/*.{js,ts,tsx}": [
+            "eslint --fix"
+        ]
+    },
+    "engines": {
+        "node": "14.17.1"
+    },
+    "jest": {
+        "resetMocks": false
     }
-  },
-  "lint-staged": {
-    "*/**/*.{js,ts,tsx}": [
-      "eslint --fix"
-    ]
-  },
-  "engines": {
-    "node": "14.17.1"
-  }
 }

@@ -1,18 +1,16 @@
 {
-  "trigger": true,
-  "modules": [
-    "pre-signup-module"
-  ],
-  "parentResource": "curatoruic254d982",
-  "functionName": "curatoruic254d982PreSignup",
-  "resourceName": "curatoruic254d982PreSignup",
-  "parentStack": "auth",
-  "triggerEnvs": "[]",
-  "triggerDir": "/usr/local/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/PreSignup",
-  "triggerTemplate": "PreSignup.json.ejs",
-  "roleName": "curatoruic254d982PreSignup",
-  "skipEdit": true,
-  "DOMAINWHITELIST": "",
-  "enableCors": false,
-  "triggerEventPath": "PreSignup.event.json"
+    "trigger": true,
+    "modules": ["pre-signup-module"],
+    "parentResource": "curatoruic254d982",
+    "functionName": "curatoruic254d982PreSignup",
+    "resourceName": "curatoruic254d982PreSignup",
+    "parentStack": "auth",
+    "triggerEnvs": "[]",
+    "triggerDir": "/usr/local/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/PreSignup",
+    "triggerTemplate": "PreSignup.json.ejs",
+    "roleName": "curatoruic254d982PreSignup",
+    "skipEdit": true,
+    "DOMAINWHITELIST": "",
+    "enableCors": false,
+    "triggerEventPath": "PreSignup.event.json"
 }

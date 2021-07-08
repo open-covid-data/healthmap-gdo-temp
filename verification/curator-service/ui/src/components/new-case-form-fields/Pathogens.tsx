@@ -1,4 +1,4 @@
-import { Field, useFormikContext } from 'formik';
+import { Field, FormikTouched, useFormikContext } from 'formik';
 
 import { Autocomplete } from '@material-ui/lab';
 import CaseFormValues from './CaseFormValues';
@@ -45,9 +45,8 @@ export function PathogensAutocomplete(): JSX.Element {
         new Map(),
     );
     const loading = open && options.keys.length === 0;
-    const { setFieldValue, setTouched, initialValues } = useFormikContext<
-        CaseFormValues
-    >();
+    const { setFieldValue, setTouched, initialValues } =
+        useFormikContext<CaseFormValues>();
 
     React.useEffect(() => {
         let active = true;
@@ -110,7 +109,11 @@ export function PathogensAutocomplete(): JSX.Element {
                     }) ?? undefined,
                 );
             }}
-            onBlur={(): void => setTouched({ pathogens: true } as any)}
+            onBlur={(): void =>
+                setTouched({
+                    pathogens: true,
+                } as unknown as FormikTouched<CaseFormValues>)
+            }
             defaultValue={initialValues.pathogens?.map(
                 (pathogen) => pathogen.name,
             )}

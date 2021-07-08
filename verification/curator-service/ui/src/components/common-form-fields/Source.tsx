@@ -18,7 +18,7 @@ interface SourceProps {
     initialValue?: CaseReference;
     hasSourceEntryId?: boolean;
     freeSolo?: boolean;
-    sourcesWithStableIdentifiers?: boolean,
+    sourcesWithStableIdentifiers?: boolean;
 }
 
 const TooltipText = () => (
@@ -42,7 +42,7 @@ const TooltipText = () => (
     </StyledTooltip>
 );
 
-export default class Source extends React.Component<SourceProps, {}> {
+export default class Source extends React.Component<SourceProps, unknown> {
     render(): JSX.Element {
         const freeSolo =
             this.props.freeSolo === undefined ? true : this.props.freeSolo;
@@ -55,7 +55,9 @@ export default class Source extends React.Component<SourceProps, {}> {
                 <SourcesAutocomplete
                     initialValue={this.props.initialValue}
                     freeSolo={freeSolo}
-                    sourcesWithStableIdentifiers={this.props.sourcesWithStableIdentifiers}
+                    sourcesWithStableIdentifiers={
+                        this.props.sourcesWithStableIdentifiers
+                    }
                 />
                 {this.props.hasSourceEntryId && (
                     <FastField
@@ -114,7 +116,7 @@ export async function submitSource(opts: {
     return {
         sourceId: resp.data._id,
         sourceUrl: opts.url,
-        additionalSources: ([] as unknown) as [{ sourceUrl: string }],
+        additionalSources: [] as unknown as [{ sourceUrl: string }],
     };
 }
 
@@ -155,14 +157,16 @@ export function SourcesAutocomplete(
                         },
                     );
                     // this filtering could also be done server-side but there isn't a big number of sources
-                    if (props.sourcesWithStableIdentifiers)
-                    {
-                        callback(resp.data.sources.filter(s => {
-                            return s.hasStableIdentifiers === undefined || s.hasStableIdentifiers === true;
-                        }));
-                    }
-                    else
-                    {
+                    if (props.sourcesWithStableIdentifiers) {
+                        callback(
+                            resp.data.sources.filter((s) => {
+                                return (
+                                    s.hasStableIdentifiers === undefined ||
+                                    s.hasStableIdentifiers === true
+                                );
+                            }),
+                        );
+                    } else {
                         callback(resp.data.sources);
                     }
                 },
@@ -202,7 +206,7 @@ export function SourcesAutocomplete(
                             sourceId: source._id,
                             sourceUrl: source.origin.url,
                             sourceName: source.name,
-                            additionalSources: ([] as unknown) as [
+                            additionalSources: [] as unknown as [
                                 { sourceUrl: string },
                             ],
                         })),
@@ -237,7 +241,7 @@ export function SourcesAutocomplete(
                     );
                 }}
                 onChange={(
-                    _: any,
+                    _: unknown,
                     newValue: CaseReferenceForm | string | null,
                 ): void => {
                     // newValue is a string if the user typed a URL and did not
@@ -251,7 +255,7 @@ export function SourcesAutocomplete(
                             sourceUrl: newValue,
                             sourceId: '',
                             sourceName: values.caseReference?.sourceName ?? '',
-                            additionalSources: ([] as unknown) as [
+                            additionalSources: [] as unknown as [
                                 { sourceUrl: string },
                             ],
                         };
@@ -281,7 +285,7 @@ export function SourcesAutocomplete(
                             sourceUrl: params.inputValue,
                             sourceId: '',
                             sourceName: values.caseReference?.sourceName ?? '',
-                            additionalSources: ([] as unknown) as [
+                            additionalSources: [] as unknown as [
                                 { sourceUrl: string },
                             ],
                         });

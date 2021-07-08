@@ -66,6 +66,7 @@ class Users extends React.Component<Props, UsersState> {
     // We could use a proper type here but then we wouldn't be able to call
     // onQueryChange() to refresh the table as we want.
     // https://github.com/mbrn/material-table/issues/1752
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tableRef: RefObject<any> = React.createRef();
     constructor(props: Props) {
         super(props);

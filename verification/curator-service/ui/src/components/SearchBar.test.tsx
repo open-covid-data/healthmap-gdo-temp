@@ -6,9 +6,8 @@ import SearchBar from './SearchBar';
 
 const AppTestComponent = () => {
     const rootRef = React.useRef<HTMLDivElement>(null);
-    const [filtersModalOpen, setFiltersModalOpen] = React.useState<boolean>(
-        false,
-    );
+    const [filtersModalOpen, setFiltersModalOpen] =
+        React.useState<boolean>(false);
 
     return (
         <div ref={rootRef}>
@@ -35,8 +34,9 @@ jest.mock('react-router-dom', () => ({
 
 describe('<SearchBar />', () => {
     it('Should open filters modal', async () => {
-        render(<AppTestComponent />,
-            {initialState: {app: { filterBreadcrumbs: [], searchQuery: ''}}},);
+        render(<AppTestComponent />, {
+            initialState: { app: { filterBreadcrumbs: [], searchQuery: '' } },
+        });
 
         userEvent.click(screen.getByRole('button', { name: /Filter/i }));
 

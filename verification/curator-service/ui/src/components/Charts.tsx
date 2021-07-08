@@ -11,8 +11,8 @@ import Tabs from '@material-ui/core/Tabs';
 
 interface TabPanelProps {
     children?: React.ReactNode;
-    index: any;
-    value: any;
+    index: number;
+    value: number;
 }
 
 function TabPanel(props: TabPanelProps) {
@@ -31,7 +31,7 @@ function TabPanel(props: TabPanelProps) {
     );
 }
 
-function a11yProps(index: any) {
+function a11yProps(index: number) {
     return {
         id: `simple-tab-${index}`,
         'aria-controls': `simple-tabpanel-${index}`,
@@ -44,11 +44,14 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
 }));
 
-export default function Charts() {
+export default function Charts(): JSX.Element {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
-    const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    const handleChange = (
+        event: React.ChangeEvent<unknown>,
+        newValue: number,
+    ) => {
         setValue(newValue);
     };
 

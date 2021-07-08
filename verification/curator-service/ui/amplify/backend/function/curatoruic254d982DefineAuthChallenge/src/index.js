@@ -7,12 +7,12 @@
 const moduleNames = process.env.MODULES.split(',');
 const modules = [];
 for (let i = 0; i < moduleNames.length; i += 1) {
-  modules.push(require(`./${moduleNames[i]}`));
+    modules.push(require(`./${moduleNames[i]}`));
 }
 
 exports.handler = (event, context, callback) => {
-  for (let i = 0; i < modules.length; i += 1) {
-    const { handler } = modules[i];
-    handler(event, context, callback);
-  }
+    for (let i = 0; i < modules.length; i += 1) {
+        const { handler } = modules[i];
+        handler(event, context, callback);
+    }
 };

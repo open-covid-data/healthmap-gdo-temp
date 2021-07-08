@@ -73,10 +73,8 @@ const SearchGuideDialog = ({
     onToggle,
     classes,
 }: Props): JSX.Element | null => {
-    const [
-        positionOffset,
-        setPositionOffset,
-    ] = React.useState<ControlPosition | null>(null);
+    const [positionOffset, setPositionOffset] =
+        React.useState<ControlPosition | null>(null);
     const nodeRef = React.useRef<HTMLDivElement>(null);
 
     useEffect(() => {

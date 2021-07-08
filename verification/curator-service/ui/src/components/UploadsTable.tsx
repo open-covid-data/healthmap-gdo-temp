@@ -74,6 +74,7 @@ interface TableRow {
 }
 
 class UploadsTable extends React.Component<Props, UploadsTableState> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     tableRef: RefObject<any> = React.createRef();
 
     constructor(props: Props) {
@@ -160,13 +161,12 @@ class UploadsTable extends React.Component<Props, UploadsTableState> {
                                 listUrl += '&page=' + (query.page + 1);
                                 listUrl += '&changes_only=false';
                                 this.setState({ error: '' });
-                                const response = axios.get<ListUploadsResponse>(
-                                    listUrl,
-                                );
+                                const response =
+                                    axios.get<ListUploadsResponse>(listUrl);
                                 response
                                     .then((result) => {
-                                        const flattenedSources = result.data.uploads.map(
-                                            (u) => {
+                                        const flattenedSources =
+                                            result.data.uploads.map((u) => {
                                                 return {
                                                     id: u.upload._id,
                                                     created: u.upload.created,
@@ -180,8 +180,7 @@ class UploadsTable extends React.Component<Props, UploadsTableState> {
                                                         u.upload.summary
                                                             .numUpdated ?? 0,
                                                 };
-                                            },
-                                        );
+                                            });
                                         resolve({
                                             data: flattenedSources,
                                             page: query.page,

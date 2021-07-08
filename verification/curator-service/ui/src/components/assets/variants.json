@@ -1,5 +1,20 @@
 [
-{"field1":"1","Name":"B.1.1.7","Source":"https://cov-lineages.org/global","field4":"report.html"},
-{"field1":"2","Name":"B.1.351","Source":"https://cov-lineages.org/global","field4":"report.html"},
-{"field1":"3","Name":"P.1","Source":"https://cov-lineages.org/global","field4":"report.html"}
+    {
+        "field1": "1",
+        "Name": "B.1.1.7",
+        "Source": "https://cov-lineages.org/global",
+        "field4": "report.html"
+    },
+    {
+        "field1": "2",
+        "Name": "B.1.351",
+        "Source": "https://cov-lineages.org/global",
+        "field4": "report.html"
+    },
+    {
+        "field1": "3",
+        "Name": "P.1",
+        "Source": "https://cov-lineages.org/global",
+        "field4": "report.html"
+    }
 ]

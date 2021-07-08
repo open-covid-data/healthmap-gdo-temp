@@ -1,6 +1,6 @@
 [
-  {
-    "groupName": "passwordless",
-    "precedence": 1
-  }
+    {
+        "groupName": "passwordless",
+        "precedence": 1
+    }
 ]

@@ -251,7 +251,11 @@ const NewCaseValidation = Yup.object().shape(
     [['maxAge', 'minAge']],
 );
 
-function hasErrors(fields: string[], errors: any, touched: any): boolean {
+function hasErrors(
+    fields: string[],
+    errors: Record<string, unknown>,
+    touched: Record<string, unknown>,
+): boolean {
     for (const field of fields) {
         if (
             hasKey(touched, field) &&

@@ -29,10 +29,10 @@ interface Props {
     isAgreementMessage: boolean;
     isNewsletterChecked: boolean;
     classes: {
-        emailField: any;
-        divider: any;
-        loader: any;
-        signInButton: any;
+        emailField: string;
+        divider: string;
+        loader: string;
+        signInButton: string;
     };
 }
 
@@ -52,7 +52,7 @@ export default function SignInForm({
     isAgreementMessage,
     isNewsletterChecked,
     classes,
-}: Props) {
+}: Props): JSX.Element {
     const signInClasses = useStyles();
 
     return (

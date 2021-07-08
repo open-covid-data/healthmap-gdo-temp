@@ -2,13 +2,10 @@ import App from './App';
 import { MemoryRouter, Router } from 'react-router-dom';
 import React from 'react';
 import axios from 'axios';
-import {
-    wait,
-    within,
-} from '@testing-library/react';
+import { wait, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryHistory } from 'history';
-import { render, fireEvent, screen } from '../util/test-utils'
+import { render, fireEvent, screen } from '../util/test-utils';
 
 jest.mock('axios');
 // Mock charts page so that requests for mongo charts are not sent

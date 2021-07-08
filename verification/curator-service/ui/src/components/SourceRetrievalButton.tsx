@@ -54,11 +54,7 @@ export default function SourceRetrievalButton(props: {
             >
                 {retrieving ? 'Retrieving...' : 'Trigger retrieval'}
             </Button>
-            {result && (
-                <div>
-                    JobName: {result?.jobName}
-                </div>
-            )}
+            {result && <div>JobName: {result?.jobName}</div>}
             {error && <MuiAlert severity="error">{error}</MuiAlert>}
         </>
     );

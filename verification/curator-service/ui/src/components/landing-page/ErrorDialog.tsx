@@ -13,7 +13,7 @@ interface Props {
     setIsOpen: (value: boolean) => void;
 }
 
-export default function ErrorDialog({ isOpen, setIsOpen }: Props) {
+export default function ErrorDialog({ isOpen, setIsOpen }: Props): JSX.Element {
     return (
         <Dialog open={isOpen}>
             <DialogTitle>Error</DialogTitle>

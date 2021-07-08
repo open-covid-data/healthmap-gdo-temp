@@ -20,7 +20,7 @@ import {
     useHistory,
     useLocation,
 } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Theme, makeStyles } from '@material-ui/core/styles';
 
 import AddIcon from '@material-ui/icons/Add';
@@ -62,7 +62,11 @@ import { useCookieBanner } from '../../hooks/useCookieBanner';
 import { SortBy, SortByOrder } from '../../constants/types';
 import { URLToSearchQuery } from '../util/searchQuery';
 import { useAppDispatch } from '../../hooks/redux';
-import { setSearchQuery, setFilterBreadcrumbs, deleteFilterBreadcrumbs} from './redux/appSlice';
+import {
+    setSearchQuery,
+    setFilterBreadcrumbs,
+    deleteFilterBreadcrumbs,
+} from './redux/appSlice';
 // import { selectFilterBreadcrumbs} from './redux/selectors';
 // import { useSelector } from 'react-redux';
 
@@ -376,10 +380,8 @@ export default function App(): JSX.Element {
     const [user, setUser] = useState<User | undefined>();
     const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
     const [isLoadingUser, setIsLoadingUser] = useState<boolean>(true);
-    const [
-        createNewButtonAnchorEl,
-        setCreateNewButtonAnchorEl,
-    ] = useState<Element | null>();
+    const [createNewButtonAnchorEl, setCreateNewButtonAnchorEl] =
+        useState<Element | null>();
     const [selectedMenuIndex, setSelectedMenuIndex] = React.useState<number>();
     const [listPage, setListPage] = React.useState<number>(0);
     const [listPageSize, setListPageSize] = React.useState<number>(50);
@@ -387,12 +389,10 @@ export default function App(): JSX.Element {
     const lastLocation = useLastLocation();
     const history = useHistory();
     const location = useLocation<LocationState>();
-    const [filtersModalOpen, setFiltersModalOpen] = React.useState<boolean>(
-        false,
-    );
-    const [activeFilterInput, setActiveFilterInput] = React.useState<string>(
-        '',
-    );
+    const [filtersModalOpen, setFiltersModalOpen] =
+        React.useState<boolean>(false);
+    const [activeFilterInput, setActiveFilterInput] =
+        React.useState<string>('');
     const [sortBy, setSortBy] = useState<SortBy>(SortBy.Default);
     const [sortByOrder, setSortByOrder] = useState<SortByOrder>(
         SortByOrder.Descending,
@@ -401,40 +401,55 @@ export default function App(): JSX.Element {
 
     const savedSearchQuery = localStorage.getItem('searchQuery');
 
-    const menuList = user
-        ? [
-              {
-                  text: 'Charts',
-                  icon: <HomeIcon />,
-                  to: '/',
-                  displayCheck: (): boolean => hasAnyRole(['curator', 'admin']),
-              },
-              {
-                  text: 'Line list',
-                  icon: <ListIcon />,
-                  to: { pathname: '/cases', search: '' },
-                  displayCheck: (): boolean => true,
-              },
-              {
-                  text: 'Sources',
-                  icon: <LinkIcon />,
-                  to: '/sources',
-                  displayCheck: (): boolean => hasAnyRole(['curator']),
-              },
-              {
-                  text: 'Uploads',
-                  icon: <PublishIcon />,
-                  to: '/uploads',
-                  displayCheck: (): boolean => hasAnyRole(['curator']),
-              },
-              {
-                  text: 'Manage users',
-                  icon: <PeopleIcon />,
-                  to: '/users',
-                  displayCheck: (): boolean => hasAnyRole(['admin']),
-              },
-          ]
-        : [];
+    const hasAnyRole = useCallback(
+        (requiredRoles: string[]): boolean => {
+            if (!user) {
+                return false;
+            }
+            return user?.roles?.some((r: string) => requiredRoles.includes(r));
+        },
+        [user],
+    );
+
+    const menuList = useMemo(
+        () =>
+            user
+                ? [
+                      {
+                          text: 'Charts',
+                          icon: <HomeIcon />,
+                          to: '/',
+                          displayCheck: (): boolean =>
+                              hasAnyRole(['curator', 'admin']),
+                      },
+                      {
+                          text: 'Line list',
+                          icon: <ListIcon />,
+                          to: { pathname: '/cases', search: '' },
+                          displayCheck: (): boolean => true,
+                      },
+                      {
+                          text: 'Sources',
+                          icon: <LinkIcon />,
+                          to: '/sources',
+                          displayCheck: (): boolean => hasAnyRole(['curator']),
+                      },
+                      {
+                          text: 'Uploads',
+                          icon: <PublishIcon />,
+                          to: '/uploads',
+                          displayCheck: (): boolean => hasAnyRole(['curator']),
+                      },
+                      {
+                          text: 'Manage users',
+                          icon: <PeopleIcon />,
+                          to: '/users',
+                          displayCheck: (): boolean => hasAnyRole(['admin']),
+                      },
+                  ]
+                : [],
+        [user, hasAnyRole],
+    );
 
     // Update filter breadcrumbs
     useEffect(() => {
@@ -483,18 +498,13 @@ export default function App(): JSX.Element {
             .finally(() => setIsLoadingUser(false));
     };
 
-    const hasAnyRole = (requiredRoles: string[]): boolean => {
-        if (!user) {
-            return false;
-        }
-        return user?.roles?.some((r: string) => requiredRoles.includes(r));
-    };
-
     const toggleDrawer = (): void => {
         setDrawerOpen(!drawerOpen);
     };
 
-    const openCreateNewPopup = (event: any): void => {
+    const openCreateNewPopup = (event: {
+        currentTarget: Element | null | undefined;
+    }): void => {
         setCreateNewButtonAnchorEl(event.currentTarget);
     };
 
@@ -530,11 +540,10 @@ export default function App(): JSX.Element {
         // eslint-disable-next-line
     }, [savedSearchQuery]);
 
-
     // Function for deleting filter breadcrumbs
     const handleFilterBreadcrumbDelete = (breadcrumbToDelete: ChipData) => {
         const searchParams = new URLSearchParams(location.search);
-        dispatch(deleteFilterBreadcrumbs(breadcrumbToDelete))
+        dispatch(deleteFilterBreadcrumbs(breadcrumbToDelete));
         searchParams.delete(breadcrumbToDelete.key);
         history.push({
             pathname: '/cases',
@@ -548,8 +557,6 @@ export default function App(): JSX.Element {
 
         //eslint-disable-next-line
     }, [location.search]);
-
-
 
     return (
         <div className={classes.root} ref={rootRef}>

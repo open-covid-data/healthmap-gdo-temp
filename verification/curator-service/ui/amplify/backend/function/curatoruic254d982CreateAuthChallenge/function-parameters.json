@@ -1,18 +1,16 @@
 {
-  "trigger": true,
-  "modules": [
-    "boilerplate-create-challenge"
-  ],
-  "parentResource": "curatoruic254d982",
-  "functionName": "curatoruic254d982CreateAuthChallenge",
-  "resourceName": "curatoruic254d982CreateAuthChallenge",
-  "parentStack": "auth",
-  "triggerEnvs": "[]",
-  "triggerDir": "/usr/local/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/CreateAuthChallenge",
-  "triggerTemplate": "CreateAuthChallenge.json.ejs",
-  "roleName": "curatoruic254d982CreateAuthChallenge",
-  "skipEdit": true,
-  "CHALLENGEANSWER": "",
-  "enableCors": false,
-  "triggerEventPath": "CreateAuthChallenge.event.json"
+    "trigger": true,
+    "modules": ["boilerplate-create-challenge"],
+    "parentResource": "curatoruic254d982",
+    "functionName": "curatoruic254d982CreateAuthChallenge",
+    "resourceName": "curatoruic254d982CreateAuthChallenge",
+    "parentStack": "auth",
+    "triggerEnvs": "[]",
+    "triggerDir": "/usr/local/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/CreateAuthChallenge",
+    "triggerTemplate": "CreateAuthChallenge.json.ejs",
+    "roleName": "curatoruic254d982CreateAuthChallenge",
+    "skipEdit": true,
+    "CHALLENGEANSWER": "",
+    "enableCors": false,
+    "triggerEventPath": "CreateAuthChallenge.event.json"
 }

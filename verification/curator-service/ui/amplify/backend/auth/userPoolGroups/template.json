@@ -5,12 +5,12 @@
             "Type": "String",
             "Default": "authcuratoruic254d982UserPoolId"
         },
-        
+
         "authcuratoruic254d982IdentityPoolId": {
             "Type": "String",
             "Default": "authcuratoruic254d982IdentityPoolId"
         },
-        
+
         "authcuratoruic254d982AppClientID": {
             "Type": "String",
             "Default": "authcuratoruic254d982AppClientID"
@@ -40,37 +40,33 @@
         }
     },
     "Resources": {
-    
         "passwordlessGroup": {
-          "Type" : "AWS::Cognito::UserPoolGroup",
-          "Properties" : {
-              "GroupName" : "passwordless",
-              "Precedence" : 1,
-              
-              "RoleArn" : {
-                "Fn::GetAtt": [
-                    "passwordlessGroupRole",
-                    "Arn"
-                ]
-              },
-              
-              "UserPoolId" : {
-                "Ref": "authcuratoruic254d982UserPoolId"
-              } 
+            "Type": "AWS::Cognito::UserPoolGroup",
+            "Properties": {
+                "GroupName": "passwordless",
+                "Precedence": 1,
+
+                "RoleArn": {
+                    "Fn::GetAtt": ["passwordlessGroupRole", "Arn"]
+                },
+
+                "UserPoolId": {
+                    "Ref": "authcuratoruic254d982UserPoolId"
+                }
             }
         },
-        
+
         "passwordlessGroupRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
-                "RoleName":{
+                "RoleName": {
                     "Fn::Join": [
                         "",
                         [
-                          {
-                            "Ref": "authcuratoruic254d982UserPoolId"
-                          },
-                          "-passwordlessGroupRole"
+                            {
+                                "Ref": "authcuratoruic254d982UserPoolId"
+                            },
+                            "-passwordlessGroupRole"
                         ]
                     ]
                 },
@@ -85,40 +81,40 @@
                             },
                             "Action": "sts:AssumeRoleWithWebIdentity",
                             "Condition": {
-                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authcuratoruic254d982IdentityPoolId"}},
-                              "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
+                                "StringEquals": {
+                                    "cognito-identity.amazonaws.com:aud": {
+                                        "Ref": "authcuratoruic254d982IdentityPoolId"
+                                    }
+                                },
+                                "ForAnyValue:StringLike": {
+                                    "cognito-identity.amazonaws.com:amr": "authenticated"
+                                }
                             }
                         }
                     ]
                 }
             }
         },
-     
-    
-    
+
         "LambdaExecutionRole": {
             "Type": "AWS::IAM::Role",
             "Properties": {
                 "RoleName": {
                     "Fn::If": [
                         "ShouldNotCreateEnvResources",
+                        {},
                         {
-                           
-                        }, 
-                        {
-
                             "Fn::Join": [
                                 "",
                                 [
-                                  
-                                  "curatoruic254d982",
-                                  "-ExecutionRole-",
-                                  {
-                                    "Ref": "env"
-                                  }
+                                    "curatoruic254d982",
+                                    "-ExecutionRole-",
+                                    {
+                                        "Ref": "env"
+                                    }
                                 ]
                             ]
-                        }       
+                        }
                     ]
                 },
                 "AssumeRolePolicyDocument": {
@@ -127,13 +123,9 @@
                         {
                             "Effect": "Allow",
                             "Principal": {
-                                "Service": [
-                                    "lambda.amazonaws.com"
-                                ]
+                                "Service": ["lambda.amazonaws.com"]
                             },
-                            "Action": [
-                                "sts:AssumeRole"
-                            ]
+                            "Action": ["sts:AssumeRole"]
                         }
                     ]
                 },
@@ -166,7 +158,6 @@
                                         "cognito-identity:SetIdentityPoolRoles",
                                         "cognito-identity:ListIdentityPools",
                                         "cognito-identity:describeIdentityPool"
-
                                     ],
                                     "Resource": "*"
                                 }
@@ -180,9 +171,7 @@
                             "Statement": [
                                 {
                                     "Effect": "Allow",
-                                    "Action": [
-                                        "iam:PassRole"
-                                    ],
+                                    "Action": ["iam:PassRole"],
                                     "Resource": "*"
                                 }
                             ]
@@ -233,12 +222,11 @@
                                 "    cognitoidentity.setIdentityPoolRoles(params).promise();",
                                 "    response.send(event, context, response.SUCCESS, {message: 'Successfully updated identity pool.'})",
                                 "    } catch(err) {",
-                                
+
                                 "        response.send(event, context, response.FAILED, {message: 'Error updating identity pool'});",
                                 "    }",
                                 "   };",
                                 "};"
-
                             ]
                         ]
                     }
@@ -247,10 +235,7 @@
                 "Runtime": "nodejs10.x",
                 "Timeout": "300",
                 "Role": {
-                    "Fn::GetAtt": [
-                        "LambdaExecutionRole",
-                        "Arn"
-                    ]
+                    "Fn::GetAtt": ["LambdaExecutionRole", "Arn"]
                 }
             }
         },
@@ -258,15 +243,12 @@
             "Type": "Custom::LambdaCallout",
             "Properties": {
                 "ServiceToken": {
-                    "Fn::GetAtt": [
-                        "RoleMapFunction",
-                        "Arn"
-                    ]
+                    "Fn::GetAtt": ["RoleMapFunction", "Arn"]
                 },
                 "AuthRoleArn": {
                     "Ref": "AuthRoleArn"
                 },
-                "UnauthRoleArn":  {
+                "UnauthRoleArn": {
                     "Ref": "UnauthRoleArn"
                 },
                 "identityPoolId": {
@@ -290,22 +272,13 @@
             },
             "DependsOn": ["RoleMapFunction"]
         }
-   
     },
-    
+
     "Outputs": {
-      
         "passwordlessGroupRole": {
             "Value": {
-                "Fn::GetAtt": [
-                    "passwordlessGroupRole",
-                    "Arn"
-                ]
+                "Fn::GetAtt": ["passwordlessGroupRole", "Arn"]
             }
-        
         }
-        
-      
     }
-    
 }

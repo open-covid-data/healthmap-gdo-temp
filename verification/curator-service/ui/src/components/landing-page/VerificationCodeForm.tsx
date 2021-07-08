@@ -12,7 +12,7 @@ interface Props {
     setWrongCodeMessage: (value: boolean) => void;
     wrongCodeMessage: boolean;
     isSubmitting: boolean;
-    classes: { emailField: any; loader: any; signInButton: any };
+    classes: { emailField: string; loader: string; signInButton: string };
 }
 
 interface FormProps {
@@ -25,7 +25,7 @@ export default function VerificationCodeForm({
     wrongCodeMessage,
     isSubmitting,
     classes,
-}: Props) {
+}: Props): JSX.Element {
     return (
         <Formik
             initialValues={{ code: '' }}
